@@ -21,7 +21,9 @@ mongoose.connection.on("connected", () => console.log("Connected to MongoDB"));
 mongoose.connection.on("error", (err) =>
   console.log("Error connecting to MongoDB:", err)
 );
-
+app.get("/ping", (_, res) => {
+  res.send("pong");
+});
 app.use("/api/doctors", doctorRoutes);
 app.use(verifyToken);
 app.use("/api/patients", patientRoutes);

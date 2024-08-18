@@ -1,7 +1,7 @@
 const Appointment = require('../models/appointment'); // Adjust path as necessary
 
 
-getAllAppointments = async (req, res) => {
+const getAllAppointments = async (req, res) => {
   try {
       const appointments = await Appointment.find();
       res.json(appointments);
@@ -10,7 +10,7 @@ getAllAppointments = async (req, res) => {
   }
 };
 
-getAppointmentById = async (req, res) => {
+const getAppointmentById = async (req, res) => {
   const { id } = req.params; // Get the appointment ID from the request parameters
 
   try {
@@ -27,7 +27,7 @@ getAppointmentById = async (req, res) => {
 };
 
 
-scheduleAppointment = async (req, res) => {
+const scheduleAppointment = async (req, res) => {
   const appointment = new Appointment({
       patient: req.body.patient,
       date: req.body.date,
@@ -44,7 +44,7 @@ scheduleAppointment = async (req, res) => {
   }
 };
 
-getAppointmentsByDoctor = async (req, res) => {
+const getAppointmentsByDoctor = async (req, res) => {
   try {
     const { doctorId } = req.params;
     const appointmentsWithPatients = await Appointment.find({ doctor: doctorId })
@@ -58,7 +58,7 @@ getAppointmentsByDoctor = async (req, res) => {
   }
 }
 
-updateAppointment = async (req, res) => {
+const updateAppointment = async (req, res) => {
   const { id } = req.params; 
 
   try {
@@ -82,7 +82,7 @@ updateAppointment = async (req, res) => {
   }
 };
 
-deleteAppointment = async (req, res) => {
+const deleteAppointment = async (req, res) => {
   try {
     const { id } = req.params;
     const appointment = await Appointment.findByIdAndDelete(id);

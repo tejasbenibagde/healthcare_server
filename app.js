@@ -13,7 +13,7 @@ const MONGO_URI = process.env.MONGO_URI;
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(cors({ origin: "https://healthcare-pro.netlify.app" }));
 
 // MongoDB Connection
 mongoose.connect(MONGO_URI);
